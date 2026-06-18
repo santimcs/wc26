@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: admin
+  host: localhost
+
+development:
+  <<: *default
+  database: wc26_development
+
+test:
+  <<: *default
+  database: wc26_test
+
+production:
+  <<: *default
+  database: wc26_production

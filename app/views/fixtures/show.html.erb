@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Round:</strong>
+  <%= @fixture.round.name if @fixture.round %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @fixture.date.strftime("%A, %B %d, %Y") if @fixture.date %>
+</p>
+
+<p>
+  <strong>Session:</strong>
+  <%= @fixture.session.time.strftime("%H:%M") if @fixture.session %>
+</p>
+
+<p>
+  <strong>Home team:</strong>
+  <%= @fixture.home_team.name if @fixture.home_team %>
+</p>
+
+<p>
+  <strong>Away team:</strong>
+  <%= @fixture.away_team.name if @fixture.away_team %>
+</p>
+
+<p>
+  <strong>Channel:</strong>
+  <%= @fixture.channel.name if @fixture.channel %>
+</p>
+
+<%= link_to 'Edit', edit_fixture_path(@fixture) %> |
+<%= link_to 'Back', fixtures_path %>

@@ -1,0 +1,92 @@
+<p id="notice"><%= notice %></p>
+<% content_for :title, 'Teams' %>
+
+<h1>World Cup 2026 Teams</h1>
+
+<table id="teams_table" class="table table-striped table-hover">  <thead>
+    <tr>
+      <th>Group</th>
+      <th>Name</th>
+      <th>Confederation</th>
+      <th>FIFA Rank</th>
+      <th>Flag</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teams.each do |team| %>
+      <tr>
+        <td><strong><%= team.group %></strong></td>
+        <td><%= team.name %></td>
+        <td><%= team.confederation %></td>
+        <td><%= team.ranking %></td>
+        <td>
+          <img src="https://flagcdn.com/w80/<%= 
+            case team.name
+            when 'Mexico' then 'mx'
+            when 'South Africa' then 'za'
+            when 'South Korea' then 'kr'
+            when 'Czech Republic' then 'cz'
+            when 'Canada' then 'ca'
+            when 'Bosnia and Herzegovina' then 'ba'
+            when 'Qatar' then 'qa'
+            when 'Switzerland' then 'ch'
+            when 'Brazil' then 'br'
+            when 'Morocco' then 'ma'
+            when 'Haiti' then 'ht'
+            when 'Scotland' then 'gb-sct'
+            when 'United States' then 'us'
+            when 'Paraguay' then 'py'
+            when 'Australia' then 'au'
+            when 'Turkey' then 'tr'
+            when 'Germany' then 'de'
+            when 'Curacao' then 'cw'
+            when 'Ivory Coast' then 'ci'
+            when 'Ecuador' then 'ec'
+            when 'Netherlands' then 'nl'
+            when 'Japan' then 'jp'
+            when 'Sweden' then 'se'
+            when 'Tunisia' then 'tn'
+            when 'Belgium' then 'be'
+            when 'Egypt' then 'eg'
+            when 'Iran' then 'ir'
+            when 'New Zealand' then 'nz'
+            when 'Spain' then 'es'
+            when 'Cape Verde' then 'cv'
+            when 'Saudi Arabia' then 'sa'
+            when 'Uruguay' then 'uy'
+            when 'France' then 'fr'
+            when 'Senegal' then 'sn'
+            when 'Iraq' then 'iq'
+            when 'Norway' then 'no'
+            when 'Argentina' then 'ar'
+            when 'Algeria' then 'dz'
+            when 'Austria' then 'at'
+            when 'Jordan' then 'jo'
+            when 'Portugal' then 'pt'
+            when 'DR Congo' then 'cd'
+            when 'Uzbekistan' then 'uz'
+            when 'Colombia' then 'co'
+            when 'England' then 'gb-eng'
+            when 'Croatia' then 'hr'
+            when 'Ghana' then 'gh'
+            when 'Panama' then 'pa'
+            else 'xx'
+            end %>.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" />
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+<script>
+$(document).ready(function() {
+  $('#teams_table').DataTable({
+    "paging": true,
+    "ordering": true,
+    "searching": true,
+    "info": true,
+    "pageLength": 24,
+    "order": [[ 0, "asc" ], [ 3, "asc" ]]
+  });
+});
+</script>

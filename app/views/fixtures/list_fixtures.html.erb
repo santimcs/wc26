@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+<% content_for :title, 'Matches' %>
+
+<h1>World Cup 2026 Matches</h1>
+
+<div style="background-color: #e7f3ff; border-left: 4px solid #2196F3; padding: 15px; margin-bottom: 20px;">
+  <strong>📢 New Format:</strong> 104 matches (up from 64 in 2022)
+</div>
+
+<table id="matches" class="table table-striped table-hover">  
+  <thead>
+    <tr>
+      <th>Round</th>
+      <th>Date & Time</th>
+      <th colspan="2">Home</th>
+      <th>Result</th>
+      <th colspan="2">Away</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @fixtures.each do |fixture| %>
+      <tr>
+        <td><%= fixture.round.name if fixture.round %></td>
+        <td>
+          <%= fixture.date.strftime("%b %d") if fixture.date %><br>
+          <%= fixture.session.format_time if fixture.session %>
+         </td>
+        <!-- Home Team: Flag + Name -->
+        <td>
+          <% if fixture.home_team %>
+            <img src="<%= flag_url(fixture.home_team.name) %>" width="30" height="15" style="margin-right: 5px;" />
+          <% end %>
+        </td>
+        <td>
+          <% if fixture.home_team %>
+            <%= fixture.home_team.name + " (" + fixture.home_team.group + ")" %>
+          <% end %>
+        </td>
+        <!-- Result -->
+        <% @result = Result.find_by_fixture_id(fixture.id) %>
+        <% if @result != nil %>  
+          <td align="center" style="font-weight: bold;"><%= @result.home_goals.to_s + ' - ' + @result.away_goals.to_s %></td> 
+        <% else %>
+          <td align="center">vs</td>    
+        <% end %>
+        <!-- Away Team: Flag + Name -->
+        <td>
+          <% if fixture.away_team %>
+            <img src="<%= flag_url(fixture.away_team.name) %>" width="30" height="15" style="margin-right: 5px;" />
+          <% end %>
+        </td>
+        <td>
+          <% if fixture.away_team %>
+            <%= fixture.away_team.name + " (" + fixture.away_team.group + ")" %>
+          <% end %>
+        </td>
+        <!-- Actions -->
+        <td>
+          <%= link_to 'Edit', edit_fixture_path(fixture), style: "color: #4CAF50; text-decoration: none; margin-right: 10px;" %>
+
+          <%= link_to 'Result', new_result_path(fixture_id:     fixture.id), style: "color: #2196F3; text-decoration: none; margin-right: 10px;" if @result.nil? %>
+
+          <%= link_to 'View', fixture_path(fixture), style: "color: #550065; text-decoration: none;" %>
+          
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

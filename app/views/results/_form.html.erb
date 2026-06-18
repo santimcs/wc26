@@ -1,0 +1,31 @@
+<%= form_with(model: result, local: true) do |form| %>
+  <% if result.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(result.errors.count, "error") %> prohibited this result from being saved:</h2>
+      <ul>
+        <% result.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :fixture_id %>
+    <%= form.collection_select :fixture_id, @fixtures, :id, :display_name, { include_blank: true } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :home_goals %>
+    <%= form.number_field :home_goals, min: 0, value: 0 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :away_goals %>
+    <%= form.number_field :away_goals, min: 0, value: 0 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

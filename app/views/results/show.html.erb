@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Match Result</h2>
+
+<p>
+  <strong>Date:</strong>
+  <%= @result.fixture.date.strftime("%A, %B %d, %Y") if @result.fixture.date %>
+</p>
+
+<p>
+  <strong>Round:</strong>
+  <%= @result.fixture.round.name if @result.fixture.round %>
+</p>
+
+<p>
+  <strong>Session:</strong>
+  <%= @result.fixture.session.format_time if @result.fixture.session %>
+</p>
+
+<div style="display: flex; align-items: center; justify-content: space-around; margin: 30px 0;">
+  <div style="text-align: center; width: 200px;">
+    <img src="<%= flag_url(@result.fixture.home_team.name) %>" width="100" height="50" onerror="this.style.display='none'" />
+    <h3><%= @result.fixture.home_team.name %></h3>
+    <p style="font-size: 24px; font-weight: bold;"><%= @result.fixture.home_team.group %></p>
+  </div>
+  
+  <div style="text-align: center;">
+    <div style="font-size: 48px; font-weight: bold; background-color: #550065; color: white; padding: 20px 40px; border-radius: 10px;">
+      <%= @result.home_goals %> - <%= @result.away_goals %>
+    </div>
+  </div>
+  
+  <div style="text-align: center; width: 200px;">
+    <img src="<%= flag_url(@result.fixture.away_team.name) %>" width="100" height="50" onerror="this.style.display='none'" />
+    <h3><%= @result.fixture.away_team.name %></h3>
+    <p style="font-size: 24px; font-weight: bold;"><%= @result.fixture.away_team.group %></p>
+  </div>
+</div>
+
+<p>
+  <strong>Channel:</strong>
+  <%= @result.fixture.channel.name if @result.fixture.channel %>
+</p>
+
+<div style="margin-top: 30px;">
+  <%= link_to 'Edit', edit_result_path(@result), style: "background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-right: 10px;" %>
+  <%= link_to 'Back', results_path, style: "background-color: #550065; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-right: 10px;" %>
+  <%= link_to 'Fixtures', fixtures_path, style: "background-color: #2196F3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;" %>
+</div>

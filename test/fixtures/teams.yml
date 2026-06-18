@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  group: MyString
+  ranking: 1
+  flag: MyString
+  confederation: MyString
+
+two:
+  name: MyString
+  group: MyString
+  ranking: 1
+  flag: MyString
+  confederation: MyString

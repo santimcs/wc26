@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  round: one
+  date: 2026-06-14
+  session: one
+  home_team: one
+  away_team: one
+  channel: one
+
+two:
+  round: two
+  date: 2026-06-14
+  session: two
+  home_team: two
+  away_team: two
+  channel: two
