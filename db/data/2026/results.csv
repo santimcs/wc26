@@ -1,25 +1,21 @@
 fixture_home,fixture_away,home_goals,away_goals
-Mexico,South Africa,,
-South Korea,Czech Republic,,
-Canada,Bosnia and Herzegovina,,
-United States,Paraguay,,
-Qatar,Switzerland,,
-Brazil,Morocco,,
-Haiti,Scotland,,
-Australia,Turkey,,
-Germany,Curacao,,
-Netherlands,Japan,,
-Ivory Coast,Ecuador,,
-Sweden,Tunisia,,
-Spain,Cape Verde,,
-Belgium,Egypt,,
-Saudi Arabia,Uruguay,,
-Iran,New Zealand,,
-France,Senegal,,
-Iraq,Norway,,
-Argentina,Algeria,,
-Austria,Jordan,,
-Portugal,DR Congo,,
-England,Croatia,,
-Ghana,Panama,,
-Uzbekistan,Colombia,,
+South Korea,Czech Republic,2,1
+Mexico,South Africa,2,0
+Canada,Bosnia and Herzegovina,1,1
+United States,Paraguay,4,1
+Qatar,Switzerland,1,1
+Brazil,Morocco,1,1
+Haiti,Scotland,0,1
+Australia,Turkey,2,0
+Germany,Curacao,7,1
+Netherlands,Japan,2,2
+Ivory Coast,Ecuador,1,0
+Sweden,Tunisia,5,1
+Spain,Cape Verde,0,0
+Belgium,Egypt,1,1
+Saudi Arabia,Uruguay,1,1
+Iran,New Zealand,2,2
+France,Senegal,3,1
+Argentina,Algeria,3,0
+Iraq,Norway,1,4
+Austria,Jordan,3,1
