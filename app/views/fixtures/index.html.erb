@@ -11,6 +11,8 @@
       <th>Session</th>
       <th>Home</th>
       <th></th>
+      <th></th>
+      <th></th>
       <th>Away</th>
       <th>Channel</th>
       <th>Actions</th>
@@ -25,17 +27,25 @@
         <td><%= fixture.session.format_time if fixture.session %></td>
         <td style="white-space: nowrap;">
           <% if fixture.home_team %>
-            <img src="<%= flag_url(fixture.home_team.name) %>" width="30" height="15" style="margin-right: 5px;" />
-            <%= fixture.home_team.name %>
+            <%= fixture.home_team.name %>          
           <% end %>
         </td>
+        <td style="white-space: nowrap;">
+          <% if fixture.home_team %>
+            <img src="<%= flag_url(fixture.home_team.name) %>" width="30" height="15" style="margin-right: 5px;" />            
+          <% end %>
+        </td>        
         <td style="text-align: center; font-weight: bold;">vs</td>
         <td style="white-space: nowrap;">
           <% if fixture.away_team %>
             <img src="<%= flag_url(fixture.away_team.name) %>" width="30" height="15" style="margin-right: 5px;" />
-            <%= fixture.away_team.name %>
           <% end %>
         </td>
+        <td style="white-space: nowrap;">
+          <% if fixture.away_team %>
+            <%= fixture.away_team.name %>
+          <% end %>
+        </td>        
         <td><%= fixture.channel.name if fixture.channel %></td>
         <td>
           <%= link_to 'Show', fixture_path(fixture), class: 'btn btn-xs btn-info' %>
@@ -59,8 +69,8 @@ $(document).ready(function() {
     "pageLength": 25,
     "order": [[ 1, "desc" ], [ 2, "asc" ]],
     "columnDefs": [
-      { "targets": [4, 7], "orderable": false },
-      { "targets": 7, "width": "15%" }
+      { "targets": [4,5,6,9], "orderable": false },
+      { "targets": 9, "width": "15%" }
     ]
   });
 });
