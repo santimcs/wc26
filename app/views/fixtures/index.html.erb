@@ -3,7 +3,7 @@
 
 <h1>World Cup 2026 Fixtures</h1>
 
-<table class="table table-striped table-hover">
+<table id="fixtures_table" class="table table-striped table-hover">
   <thead>
     <tr>
       <th>Round</th>
@@ -13,7 +13,7 @@
       <th></th>
       <th>Away</th>
       <th>Channel</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -38,12 +38,30 @@
         </td>
         <td><%= fixture.channel.name if fixture.channel %></td>
         <td>
-          <%= link_to 'Show', fixture %>
-          <%= link_to 'Edit', edit_fixture_path(fixture) %>
-          <%= link_to 'Destroy', fixture, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Show', fixture_path(fixture), class: 'btn btn-xs btn-info' %>
+          <%= link_to 'Edit', edit_fixture_path(fixture), class: 'btn btn-xs btn-warning' %>
+          <%= link_to 'Destroy', fixture_path(fixture), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
         </td>
       </tr>
     <% end %>
   </tbody>
+</table>
 
 <%= link_to 'New Fixture', new_fixture_path %>
+
+<script>
+$(document).ready(function() {
+  $('#fixtures_table').DataTable({
+    "paging": true,
+    "ordering": true,
+    "searching": true,
+    "info": true,
+    "pageLength": 25,
+    "order": [[ 1, "desc" ], [ 2, "asc" ]],
+    "columnDefs": [
+      { "targets": [4, 7], "orderable": false },
+      { "targets": 7, "width": "15%" }
+    ]
+  });
+});
+</script>
