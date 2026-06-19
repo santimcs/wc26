@@ -22,7 +22,7 @@
 
   <div class="field">
     <%= form.label :session_id %>
-    <%= form.collection_select :session_id, Session.order(:sequence), :id, :time, include_blank: true %>
+<%= form.collection_select :session_id, Session.order(:sequence), :id, :format_time, include_blank: true %>
   </div>
 
   <div class="field">
