@@ -1,49 +1,105 @@
-<p id="notice"><%= notice %></p>
+<div class="match-card">
 
-<h2>Match Result</h2>
-
-<p>
-  <strong>Date:</strong>
-  <%= @result.fixture.date.strftime("%A, %B %d, %Y") if @result.fixture.date %>
-</p>
-
-<p>
-  <strong>Round:</strong>
-  <%= @result.fixture.round.name if @result.fixture.round %>
-</p>
-
-<p>
-  <strong>Session:</strong>
-  <%= @result.fixture.session.format_time if @result.fixture.session %>
-</p>
-
-<div style="display: flex; align-items: center; justify-content: space-around; margin: 30px 0;">
-  <div style="text-align: center; width: 200px;">
-    <img src="<%= flag_url(@result.fixture.home_team.name) %>" width="100" height="50" onerror="this.style.display='none'" />
-    <h3><%= @result.fixture.home_team.name %></h3>
-    <p style="font-size: 24px; font-weight: bold;"><%= @result.fixture.home_team.group %></p>
+  <div class="wc-logo">
+    <%= image_tag 'logo.png', class: "logo-img" %>
   </div>
-  
-  <div style="text-align: center;">
-    <div style="font-size: 48px; font-weight: bold; background-color: #550065; color: white; padding: 20px 40px; border-radius: 10px;">
+
+  <div class="match-meta">
+    Group <%= @result.fixture.home_team.group %> • Match <%= @result.fixture.id %>
+  </div>
+
+  <div class="scoreboard">
+
+    <!-- Home Team: Flag on top, Name below -->
+    <div class="team home">
+      <img src="<%= flag_url(@result.fixture.home_team.name) %>"
+           alt="<%= @result.fixture.home_team.name %>"
+           onerror="this.style.display='none'">
+      <div class="team-name">
+        <%= @result.fixture.home_team.name %>
+      </div>
+    </div>
+
+    <!-- Live Score Center -->
+    <div class="score">
       <%= @result.home_goals %> - <%= @result.away_goals %>
     </div>
+
+    <!-- Away Team: Flag on top, Name below -->
+    <div class="team away">
+      <img src="<%= flag_url(@result.fixture.away_team.name) %>"
+           alt="<%= @result.fixture.away_team.name %>"
+           onerror="this.style.display='none'">
+      <div class="team-name">
+        <%= @result.fixture.away_team.name %>
+      </div>
+    </div>
+
   </div>
+
+</div>
+
+<style>
+  .match-card {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    background: #fff;
+  }
+
+  .wc-logo {
+    margin-bottom: 12px;
+  }
   
-  <div style="text-align: center; width: 200px;">
-    <img src="<%= flag_url(@result.fixture.away_team.name) %>" width="100" height="50" onerror="this.style.display='none'" />
-    <h3><%= @result.fixture.away_team.name %></h3>
-    <p style="font-size: 24px; font-weight: bold;"><%= @result.fixture.away_team.group %></p>
-  </div>
-</div>
+  .wc-logo .logo-img {
+    height: 80px; /* Adjusted to match the larger proportions in the image */
+    width: auto;
+  }
 
-<p>
-  <strong>Channel:</strong>
-  <%= @result.fixture.channel.name if @result.fixture.channel %>
-</p>
+  .match-meta {
+    font-size: 16px;
+    color: #9aa0a6;
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
 
-<div style="margin-top: 30px;">
-  <%= link_to 'Edit', edit_result_path(@result), style: "background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-right: 10px;" %>
-  <%= link_to 'Back', results_path, style: "background-color: #550065; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-right: 10px;" %>
-  <%= link_to 'Fixtures', fixtures_path, style: "background-color: #2196F3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;" %>
-</div>
+  .scoreboard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+
+  .team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+  }
+
+  .team img {
+    width: 80px;
+    height: auto;
+    border: 1px solid #f0f0f0; /* Optional: adds subtle crisp definition to flags */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-bottom: 8px;
+  }
+
+  .team-name {
+    font-size: 24px;
+    font-weight: 400;
+    color: #000;
+    text-transform: uppercase; /* Standardizes 3-letter codes like SCO / MAR */
+  }
+
+  .score {
+    font-size: 32px;
+    font-weight: 400;
+    color: #000;
+    flex-grow: 1;
+    text-align: center;
+    letter-spacing: 2px;
+  }
+</style>

@@ -48,7 +48,7 @@
         </td>        
         <td><%= fixture.channel.name if fixture.channel %></td>
         <td>
-          <%= link_to 'Show', fixture_path(fixture), class: 'btn btn-xs btn-info' %>
+
           <%= link_to 'Edit', edit_fixture_path(fixture), class: 'btn btn-xs btn-warning' %>
           <%= link_to 'Destroy', fixture_path(fixture), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
         </td>
@@ -70,7 +70,7 @@ $(document).ready(function() {
     "order": [[ 1, "asc" ], [ 2, "asc" ]],
     "columnDefs": [
       { "targets": [4,5,6,9], "orderable": false },
-      { "targets": 9, "width": "15%" }
+      { "targets": 9, "width": "10%" }
     ]
   });
 });
