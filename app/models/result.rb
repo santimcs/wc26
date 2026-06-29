@@ -1,12 +1,17 @@
 class Result < ApplicationRecord
   belongs_to :fixture
   after_save :update_standings, unless: :knockout_fixture?
+   after_save :advance_winner,   if: :knockout_fixture?
   after_destroy :revert_standings, unless: :knockout_fixture?
   
   validates :home_goals, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :away_goals, presence: true, numericality: { greater_than_or_equal_to: 0 }
   
   private
+
+  def advance_winner
+    AdvanceKnockoutWinner.call(self)
+  end
 
   def knockout_fixture?
     # Group round has sequence = 1; all others (>=2) are knockout

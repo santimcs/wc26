@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fixture:</strong>
+  <%= fixture_display_with_round(@knockout_result.fixture) %>
+</p>
+
+<p>
+  <strong>Home goals:</strong>
+  <%= @knockout_result.home_goals %>
+</p>
+
+<p>
+  <strong>Away goals:</strong>
+  <%= @knockout_result.away_goals %>
+</p>
+
+<%= link_to 'Edit', edit_knockout_result_path(@knockout_result) %> |
+<%= link_to 'Back', knockout_results_path %>
