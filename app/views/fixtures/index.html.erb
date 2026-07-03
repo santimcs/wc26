@@ -6,6 +6,7 @@
 <table id="fixtures_table" class="table table-striped table-hover">
   <thead>
     <tr>
+      <th>R_Id</th>
       <th>Round</th>
       <th>Date</th>
       <th>Session</th>
@@ -22,6 +23,7 @@
   <tbody>
     <% @fixtures.each do |fixture| %>
       <tr>
+        <td><%= fixture.round.id if fixture.round %></td>
         <td><%= fixture.round.name if fixture.round %></td>
         <td><%= fixture.date.strftime("%a, %b %d") if fixture.date %></td>
         <td><%= fixture.session.format_time if fixture.session %></td>
@@ -67,10 +69,10 @@ $(document).ready(function() {
     "searching": true,
     "info": true,
     "pageLength": 25,
-    "order": [[ 1, "asc" ], [ 2, "asc" ]],
+    "order": [[ 0, "asc" ], [ 2, "asc" ], [ 3, "asc" ]],
     "columnDefs": [
-      { "targets": [4,5,6,9], "orderable": false },
-      { "targets": 9, "width": "10%" }
+      { "targets": [5,6,7,10], "orderable": false },
+      { "targets": 10, "width": "10%" }
     ]
   });
 });

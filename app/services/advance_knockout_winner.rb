@@ -15,17 +15,9 @@ class AdvanceKnockoutWinner
     next_match = @fixture.next_match
     return unless next_match
 
-    # Determine winner
-    if @result.home_goals > @result.away_goals
-      winner = @fixture.home_team
-    elsif @result.home_goals < @result.away_goals
-      winner = @fixture.away_team
-    else
-      # Draw – we'll handle extra time/penalties later
-      return
-    end
+    winner = @result.winner_team
+    return unless winner
 
-    # Place winner into the next fixture based on winner_slot
     if @fixture.winner_slot == 'home'
       next_match.update!(home_team: winner)
     elsif @fixture.winner_slot == 'away'

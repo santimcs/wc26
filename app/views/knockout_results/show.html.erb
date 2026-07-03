@@ -1,19 +1,164 @@
-<p id="notice"><%= notice %></p>
+<div class="match-card">
 
-<p>
-  <strong>Fixture:</strong>
-  <%= fixture_display_with_round(@knockout_result.fixture) %>
-</p>
+  <div class="wc-logo">
+    <%= image_tag 'logo.png', class: "logo-img" %>
+  </div>
 
-<p>
-  <strong>Home goals:</strong>
-  <%= @knockout_result.home_goals %>
-</p>
+  <div class="match-meta">
+    <%= @knockout_result.fixture.round.name %> • Match <%= @knockout_result.fixture.id %>
+  </div>  
 
-<p>
-  <strong>Away goals:</strong>
-  <%= @knockout_result.away_goals %>
-</p>
+    <div class="scoreboard">
+
+    <div class="team home">
+      <div class="team-name">
+        <%= @knockout_result.fixture.home_team.name %>
+      </div>
+      <img src="<%= flag_url(@knockout_result.fixture.home_team.name) %>"
+           alt="<%= @knockout_result.fixture.home_team.name %>"
+           onerror="this.style.display='none'">
+    </div>
+
+    <div class="score-container">
+      <% if @knockout_result.home_penalties.present? && @knockout_result.away_penalties.present? %>
+        <span class="penalty-score home-pens">(<%= @knockout_result.home_penalties %>)</span>
+      <% end %>
+      
+      <div class="score">
+        <%= @knockout_result.home_goals %> - <%= @knockout_result.away_goals %>
+      </div>
+
+      <% if @knockout_result.away_penalties.present? && @knockout_result.home_penalties.present? %>
+        <span class="penalty-score away-pens">(<%= @knockout_result.away_penalties %>)</span>
+      <% end %>
+    </div>
+
+    <div class="team away">
+      <img src="<%= flag_url(@knockout_result.fixture.away_team.name) %>"
+           alt="<%= @knockout_result.fixture.away_team.name %>"
+           onerror="this.style.display='none'">
+      <div class="team-name">
+        <%= @knockout_result.fixture.away_team.name %>
+        <% if @knockout_result.home_penalties.present? && @knockout_result.away_penalties.present? && @knockout_result.home_penalties != @knockout_result.away_penalties %>
+          <% winner = @knockout_result.home_penalties > @knockout_result.away_penalties ? @knockout_result.fixture.home_team.name : @knockout_result.fixture.away_team.name %>
+          <% if winner == @knockout_result.fixture.away_team.name %>
+            <span class="winner-dot">•</span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <% if @knockout_result.home_penalties.present? && @knockout_result.away_penalties.present? && @knockout_result.home_penalties != @knockout_result.away_penalties %>
+    <div class="penalty-footer">
+      <%= @knockout_result.home_penalties > @knockout_result.away_penalties ? @knockout_result.fixture.home_team.name : @knockout_result.fixture.away_team.name %>
+      wins <%= @knockout_result.away_penalties %> - <%= @knockout_result.home_penalties %> on penalties
+    </div>
+  <% end %>
+
+
 
 <%= link_to 'Edit', edit_knockout_result_path(@knockout_result) %> |
 <%= link_to 'Back', knockout_results_path %>
+
+</div>  <!-- End of match-card --> 
+
+
+<style>
+  .match-card {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    max-width: 800px; /* Widened to match the widescreen display in screenshot */
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    background: #fff;
+  }
+
+  .wc-logo {
+    margin-bottom: 24px;
+  }
+  
+  .wc-logo .logo-img {
+    height: 70px;
+    width: auto;
+  }
+
+  .match-meta {
+    font-size: 14px;
+    color: #aaafb4;
+    font-weight: 400;
+    margin-bottom: 40px;
+    text-align: left; /* Aligns description to the left edge like the image */
+  }
+
+  .scoreboard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  .team {
+    display: flex;
+    flex-direction: row; /* Horizontal alignment for name and flag */
+    align-items: center;
+    gap: 12px;
+  }
+
+  .team.home {
+    justify-content: flex-end;
+    flex-grow: 1;
+  }
+
+  .team.away {
+    justify-content: flex-start;
+    flex-grow: 1;
+  }
+
+  .team img {
+    width: 48px;
+    height: auto;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  .team-name {
+    font-size: 24px;
+    font-weight: 400;
+    color: #000;
+    position: relative;
+  }
+
+  .winner-dot {
+    margin-left: 6px;
+    font-weight: bold;
+  }
+
+  .score-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    min-width: 140px;
+  }
+
+  .score {
+    font-size: 26px;
+    font-weight: 400;
+    color: #000;
+    letter-spacing: 4px;
+  }
+
+  .penalty-score {
+    font-size: 16px;
+    color: #70757a;
+  }
+
+  .penalty-footer {
+    font-size: 15px;
+    color: #000;
+    margin-top: 16px;
+    font-weight: 400;
+  }
+</style>

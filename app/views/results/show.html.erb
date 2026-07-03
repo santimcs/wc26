@@ -5,44 +5,64 @@
   </div>
 
   <div class="match-meta">
-    Group <%= @result.fixture.home_team.group %> • Match <%= @result.fixture.id %>
+    <%= @result.fixture.round.name %> • Match <%= @result.fixture.id %>
   </div>
 
   <div class="scoreboard">
 
-    <!-- Home Team: Flag on top, Name below -->
     <div class="team home">
-      <img src="<%= flag_url(@result.fixture.home_team.name) %>"
-           alt="<%= @result.fixture.home_team.name %>"
-           onerror="this.style.display='none'">
       <div class="team-name">
         <%= @result.fixture.home_team.name %>
       </div>
+      <img src="<%= flag_url(@result.fixture.home_team.name) %>"
+           alt="<%= @result.fixture.home_team.name %>"
+           onerror="this.style.display='none'">
     </div>
 
-    <!-- Live Score Center -->
-    <div class="score">
-      <%= @result.home_goals %> - <%= @result.away_goals %>
+    <div class="score-container">
+      <% if @result.home_penalties.present? && @result.away_penalties.present? %>
+        <span class="penalty-score home-pens">(<%= @result.home_penalties %>)</span>
+      <% end %>
+      
+      <div class="score">
+        <%= @result.home_goals %> - <%= @result.away_goals %>
+      </div>
+
+      <% if @result.away_penalties.present? && @result.home_penalties.present? %>
+        <span class="penalty-score away-pens">(<%= @result.away_penalties %>)</span>
+      <% end %>
     </div>
 
-    <!-- Away Team: Flag on top, Name below -->
     <div class="team away">
       <img src="<%= flag_url(@result.fixture.away_team.name) %>"
            alt="<%= @result.fixture.away_team.name %>"
            onerror="this.style.display='none'">
       <div class="team-name">
         <%= @result.fixture.away_team.name %>
+        <% if @result.home_penalties.present? && @result.away_penalties.present? && @result.home_penalties != @result.away_penalties %>
+          <% winner = @result.home_penalties > @result.away_penalties ? @result.fixture.home_team.name : @result.fixture.away_team.name %>
+          <% if winner == @result.fixture.away_team.name %>
+            <span class="winner-dot">•</span>
+          <% end %>
+        <% end %>
       </div>
     </div>
 
   </div>
 
-</div>
+  <% if @result.home_penalties.present? && @result.away_penalties.present? && @result.home_penalties != @result.away_penalties %>
+    <div class="penalty-footer">
+      <%= @result.home_penalties > @result.away_penalties ? @result.fixture.home_team.name : @result.fixture.away_team.name %>
+      wins <%= @result.away_penalties %> - <%= @result.home_penalties %> on penalties
+    </div>
+  <% end %>
+
+</div>  <!-- End of match-card --> 
 
 <style>
   .match-card {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    max-width: 500px;
+    max-width: 800px; /* Widened to match the widescreen display in screenshot */
     margin: 0 auto;
     text-align: center;
     padding: 20px;
@@ -50,56 +70,89 @@
   }
 
   .wc-logo {
-    margin-bottom: 12px;
+    margin-bottom: 24px;
   }
   
   .wc-logo .logo-img {
-    height: 80px; /* Adjusted to match the larger proportions in the image */
+    height: 70px;
     width: auto;
   }
 
   .match-meta {
-    font-size: 16px;
-    color: #9aa0a6;
-    font-weight: 500;
-    margin-bottom: 24px;
+    font-size: 14px;
+    color: #aaafb4;
+    font-weight: 400;
+    margin-bottom: 40px;
+    text-align: left; /* Aligns description to the left edge like the image */
   }
 
   .scoreboard {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 10px;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 24px;
   }
 
   .team {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Horizontal alignment for name and flag */
     align-items: center;
-    width: 30%;
+    gap: 12px;
+  }
+
+  .team.home {
+    justify-content: flex-end;
+    flex-grow: 1;
+  }
+
+  .team.away {
+    justify-content: flex-start;
+    flex-grow: 1;
   }
 
   .team img {
-    width: 80px;
+    width: 48px;
     height: auto;
-    border: 1px solid #f0f0f0; /* Optional: adds subtle crisp definition to flags */
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   }
 
   .team-name {
     font-size: 24px;
     font-weight: 400;
     color: #000;
-    text-transform: uppercase; /* Standardizes 3-letter codes like SCO / MAR */
+    position: relative;
+  }
+
+  .winner-dot {
+    margin-left: 6px;
+    font-weight: bold;
+  }
+
+  .score-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    min-width: 140px;
   }
 
   .score {
-    font-size: 32px;
+    font-size: 26px;
     font-weight: 400;
     color: #000;
-    flex-grow: 1;
-    text-align: center;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
+  }
+
+  .penalty-score {
+    font-size: 16px;
+    color: #70757a;
+  }
+
+  .penalty-footer {
+    font-size: 15px;
+    color: #000;
+    margin-top: 16px;
+    font-weight: 400;
   }
 </style>

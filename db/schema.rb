@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20260628095945) do
+ActiveRecord::Schema.define(version: 20260630092440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,8 @@ ActiveRecord::Schema.define(version: 20260628095945) do
     t.integer "away_goals"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "home_penalties"
+    t.integer "away_penalties"
     t.index ["fixture_id"], name: "index_results_on_fixture_id"
   end
 

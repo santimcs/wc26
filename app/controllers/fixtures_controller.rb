@@ -2,7 +2,10 @@ class FixturesController < ApplicationController
   before_action :set_fixture, only: [:show, :edit, :update, :destroy]
 
   def index
-    @fixtures = Fixture.includes(:round, :session, :home_team, :away_team, :channel).order(:date, :session_id)
+    @criterium = Criterium.first
+    # Must have above statement else it will start from today
+    @fixtures = Fixture.includes(:round, :session, :home_team, :away_team, :channel)
+                .where("date >= ?", @criterium&.show_date || Date.today)
   end
 
   def show
@@ -40,9 +43,11 @@ class FixturesController < ApplicationController
   def list_fixtures
     # Use the first criterium or a specific one as default
     @criterium = Criterium.first
+    # Must have above statement else it will start from today
     @fixtures = Fixture.includes(:round, :session, :home_team, :away_team, :channel)
-                       .where("date >= ?", @criterium&.show_date || Date.today)
-                       .order(:date, :session_id)
+                   .where("date >= ?", @criterium&.show_date || Date.today)
+                   .references(:session)
+                   .order(:round_id, :date, 'sessions.sequence')
   end
 
   private

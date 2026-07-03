@@ -9,6 +9,8 @@
       <th>Fixture</th>
       <th>Home goals</th>
       <th>Away goals</th>
+      <th>Home penalties</th>
+      <th>Away penalties</th>      
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +22,8 @@
         <td><%= fixture_display_with_round(knockout_result.fixture) %></td>
         <td><%= knockout_result.home_goals %></td>
         <td><%= knockout_result.away_goals %></td>
+        <td><%= knockout_result.home_penalties %></td>
+        <td><%= knockout_result.away_penalties %></td>        
         <td><%= link_to 'Show', knockout_result %></td>
         <td><%= link_to 'Edit', edit_knockout_result_path(knockout_result) %></td>
         <td><%= link_to 'Destroy', knockout_result, method: :delete, data: { confirm: 'Are you sure?' } %></td>

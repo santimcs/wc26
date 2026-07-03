@@ -63,7 +63,10 @@ class KnockoutResultsController < ApplicationController
                        .includes(:home_team, :away_team)
   end
 
+  # def knockout_result_params
+  #   params.require(:knockout_result).permit(:fixture_id, :home_goals, :away_goals)
+  # end
   def knockout_result_params
-    params.require(:knockout_result).permit(:fixture_id, :home_goals, :away_goals)
-  end
+  params.require(:knockout_result).permit(:fixture_id, :home_goals, :away_goals, :home_penalties, :away_penalties)
+end
 end

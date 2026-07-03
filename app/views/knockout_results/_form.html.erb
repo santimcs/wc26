@@ -17,12 +17,22 @@
 
   <div class="field">
     <%= form.label :home_goals %>
-    <%= form.number_field :home_goals, min: 0, value: 0 %>
+    <%= form.number_field :home_goals, min: 0 %>
   </div>
 
   <div class="field">
     <%= form.label :away_goals %>
-    <%= form.number_field :away_goals, min: 0, value: 0 %>
+    <%= form.number_field :away_goals, min: 0 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :home_penalties, "Home penalties (if draw)" %>
+    <%= form.number_field :home_penalties, min: 0 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :away_penalties, "Away penalties (if draw)" %>
+    <%= form.number_field :away_penalties, min: 0 %>
   </div>
 
   <div class="actions">

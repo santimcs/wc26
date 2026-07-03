@@ -10,6 +10,7 @@
       <th>Confederation</th>
       <th>FIFA Rank</th>
       <th>Flag</th>
+      <th>Id</th>      
     </tr>
   </thead>
 
@@ -74,6 +75,8 @@
             else 'xx'
             end %>.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" />
         </td>
+        <td><%= team.id %></td>
+
       </tr>
     <% end %>
   </tbody>
