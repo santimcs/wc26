@@ -1,0 +1,207 @@
+<h1>Knockout Bracket</h1>
+
+<div class="bracket-container">
+  <% @bracket.each do |round_id, fixtures| %>
+    <div class="round-column">
+      <h2><%= fixtures.first.round.name %></h2>
+      <% fixtures.each do |fixture| %>
+        <% result = fixture.results.first %>
+        <% 
+          # Determine winner and build CSS class
+          winner_class = ''
+          if result
+            if result.home_goals > result.away_goals
+              winner = fixture.home_team
+            elsif result.home_goals < result.away_goals
+              winner = fixture.away_team
+            elsif result.home_penalties.present? && result.away_penalties.present?
+              if result.home_penalties > result.away_penalties
+                winner = fixture.home_team
+              elsif result.home_penalties < result.away_penalties
+                winner = fixture.away_team
+              else
+                winner = nil
+              end
+            else
+              winner = nil
+            end
+
+            if winner
+              home_winner = (fixture.home_team == winner)
+              away_winner = (fixture.away_team == winner)
+            end
+          end
+        %>
+        
+        <% if result && result.id %>
+          <%= link_to knockout_result_path(result), class: 'match-card-link' do %>
+            <div class="match-card">
+              <div class="match-teams">
+                <div class="team home <%= 'winner' if home_winner %>">
+                  <span class="team-name"><%= fixture.home_team&.name || 'TBD' %></span>
+                  <span class="team-score"><%= result&.home_goals || '' %></span>
+                </div>
+                <div class="team away <%= 'winner' if away_winner %>">
+                  <span class="team-name"><%= fixture.away_team&.name || 'TBD' %></span>
+                  <span class="team-score"><%= result&.away_goals || '' %></span>
+                </div>
+              </div>
+              <% if result&.home_penalties.present? && result&.away_penalties.present? && result.home_penalties != result.away_penalties %>
+                <div class="penalty-info">
+                  (<%= result.home_penalties %> - <%= result.away_penalties %> pens)
+                </div>
+              <% end %>
+              <div class="match-meta">
+                <%= fixture.date&.strftime('%b %d') %> •
+                <%= fixture.session&.time&.strftime('%H:%M') %>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="match-card">
+            <div class="match-teams">
+              <div class="team home">
+                <span class="team-name"><%= fixture.home_team&.name || 'TBD' %></span>
+                <span class="team-score"><%= result&.home_goals || '' %></span>
+              </div>
+              <div class="team away">
+                <span class="team-name"><%= fixture.away_team&.name || 'TBD' %></span>
+                <span class="team-score"><%= result&.away_goals || '' %></span>
+              </div>
+            </div>
+            <% if result&.home_penalties.present? && result&.away_penalties.present? && result.home_penalties != result.away_penalties %>
+              <div class="penalty-info">
+                (<%= result.home_penalties %> - <%= result.away_penalties %> pens)
+              </div>
+            <% end %>
+            <div class="match-meta">
+              <%= fixture.date&.strftime('%b %d') %> •
+              <%= fixture.session&.time&.strftime('%H:%M') %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<style>
+  .bracket-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px 0;
+    justify-content: center;
+  }
+
+  .round-column {
+    min-width: 180px;
+    flex: 0 0 auto;
+    border-right: 2px solid #ddd;
+    padding-right: 20px;
+  }
+
+  .round-column:last-child {
+    border-right: none;
+  }
+
+  .round-column h2 {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #333;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+  }
+
+  .match-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.1s;
+  }
+
+  .match-card-link:hover .match-card {
+    background: #f0f0f0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transform: scale(1.02);
+  }
+
+  .match-card {
+    background: #f9f9f9;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    font-size: 14px;
+  }
+
+  .match-teams {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .team {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .team-name {
+    font-weight: 500;
+  }
+
+  .team-score {
+    font-weight: bold;
+    color: #222;
+  }
+
+  .winner {
+    font-weight: 900 !important;
+    color: #2e7d32 !important; /* dark green */
+  }
+
+  .winner .team-name {
+    color: #2e7d32;
+  }
+
+  .winner .team-score {
+    color: #2e7d32;
+  }
+
+  .penalty-info {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    margin-top: 2px;
+  }
+
+  .match-meta {
+    font-size: 11px;
+    color: #888;
+    text-align: center;
+    margin-top: 6px;
+    border-top: 1px dashed #ddd;
+    padding-top: 4px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .bracket-container {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+    .round-column {
+      min-width: 100%;
+      border-right: none;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+    .round-column:last-child {
+      border-bottom: none;
+    }
+  }
+</style>

@@ -8,6 +8,8 @@ class Fixture < ApplicationRecord
   belongs_to :home_team, class_name: 'Team', optional: true
   belongs_to :away_team, class_name: 'Team', optional: true
   validates :date, presence: true
+
+  has_many :results  
   
   def display_name
     "#{date.strftime('%b %d')}: #{home_team.name} vs #{away_team.name} (#{round.name})"

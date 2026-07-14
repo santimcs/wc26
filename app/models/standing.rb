@@ -12,7 +12,7 @@ class Standing < ApplicationRecord
     (points.to_f / played).round(2)
   end
   
-  def form(limit = 5)
+  def custom_form(limit = 5)
     # Get last 'limit' results for this team
     fixtures = Fixture.where("home_team_id = ? OR away_team_id = ?", team.id, team.id)
                       .order(date: :desc)

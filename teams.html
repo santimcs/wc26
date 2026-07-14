@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Cup 2026 – Teams</title>
+
+  <!-- Bootstrap 3 (used in original) -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
+
+  <!-- jQuery (required for DataTables) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- DataTables JS -->
+  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap.min.js"></script>
+
+  <style>
+    body { padding-top: 70px; }
+    .navbar-brand img { height: 33px; width: auto; }
+    .container { max-width: 1200px; }
+    .flag-img { width: 70px; height: 35px; object-fit: cover; }
+    .table td, .table th { vertical-align: middle; }
+  </style>
+</head>
+
+<body>
+
+  <!-- Fixed Navigation Bar -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+<img src="/app/assets/images/logo.png" alt="World Cup 2026" style="height:33px; width:auto;">        </a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="index.html">Home</a></li>
+          <li class="active"><a href="teams.html">Teams</a></li>
+          <li><a href="standings.html">Standings</a></li>
+          <li><a href="bracket.html">Bracket</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>World Cup 2026 – Teams</h1>
+
+    <table id="teams_table" class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Group</th>
+          <th>Name</th>
+          <th>Confederation</th>
+          <th>FIFA Rank</th>
+          <th>Flag</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Data from original teams.html, without Id column -->
+        <tr><td><strong>A</strong></td><td>Mexico</td><td>CONCACAF</td><td>14</td><td><img src="https://flagcdn.com/w80/mx.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>A</strong></td><td>South Korea</td><td>AFC</td><td>25</td><td><img src="https://flagcdn.com/w80/kr.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>A</strong></td><td>Czech Republic</td><td>UEFA</td><td>40</td><td><img src="https://flagcdn.com/w80/cz.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>A</strong></td><td>South Africa</td><td>CAF</td><td>65</td><td><img src="https://flagcdn.com/w80/za.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>B</strong></td><td>Switzerland</td><td>UEFA</td><td>19</td><td><img src="https://flagcdn.com/w80/ch.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>B</strong></td><td>Canada</td><td>CONCACAF</td><td>45</td><td><img src="https://flagcdn.com/w80/ca.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>B</strong></td><td>Qatar</td><td>AFC</td><td>53</td><td><img src="https://flagcdn.com/w80/qa.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>B</strong></td><td>Bosnia and Herzegovina</td><td>UEFA</td><td>58</td><td><img src="https://flagcdn.com/w80/ba.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>C</strong></td><td>Brazil</td><td>CONMEBOL</td><td>6</td><td><img src="https://flagcdn.com/w80/br.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>C</strong></td><td>Morocco</td><td>CAF</td><td>7</td><td><img src="https://flagcdn.com/w80/ma.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>C</strong></td><td>Scotland</td><td>UEFA</td><td>32</td><td><img src="https://flagcdn.com/w80/gb-sct.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>C</strong></td><td>Haiti</td><td>CONCACAF</td><td>85</td><td><img src="https://flagcdn.com/w80/ht.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>D</strong></td><td>United States</td><td>CONCACAF</td><td>17</td><td><img src="https://flagcdn.com/w80/us.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>D</strong></td><td>Turkey</td><td>UEFA</td><td>22</td><td><img src="https://flagcdn.com/w80/tr.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>D</strong></td><td>Australia</td><td>AFC</td><td>25</td><td><img src="https://flagcdn.com/w80/au.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>D</strong></td><td>Paraguay</td><td>CONMEBOL</td><td>50</td><td><img src="https://flagcdn.com/w80/py.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>E</strong></td><td>Germany</td><td>UEFA</td><td>10</td><td><img src="https://flagcdn.com/w80/de.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>E</strong></td><td>Ecuador</td><td>CONMEBOL</td><td>23</td><td><img src="https://flagcdn.com/w80/ec.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>E</strong></td><td>Ivory Coast</td><td>CAF</td><td>52</td><td><img src="https://flagcdn.com/w80/ci.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>E</strong></td><td>Curacao</td><td>CONCACAF</td><td>90</td><td><img src="https://flagcdn.com/w80/cw.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>F</strong></td><td>Netherlands</td><td>UEFA</td><td>8</td><td><img src="https://flagcdn.com/w80/nl.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>F</strong></td><td>Japan</td><td>AFC</td><td>18</td><td><img src="https://flagcdn.com/w80/jp.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>F</strong></td><td>Sweden</td><td>UEFA</td><td>21</td><td><img src="https://flagcdn.com/w80/se.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>F</strong></td><td>Tunisia</td><td>CAF</td><td>31</td><td><img src="https://flagcdn.com/w80/tn.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>G</strong></td><td>Belgium</td><td>UEFA</td><td>9</td><td><img src="https://flagcdn.com/w80/be.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>G</strong></td><td>Iran</td><td>AFC</td><td>20</td><td><img src="https://flagcdn.com/w80/ir.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>G</strong></td><td>Egypt</td><td>CAF</td><td>34</td><td><img src="https://flagcdn.com/w80/eg.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>G</strong></td><td>New Zealand</td><td>OFC</td><td>100</td><td><img src="https://flagcdn.com/w80/nz.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>H</strong></td><td>Spain</td><td>UEFA</td><td>2</td><td><img src="https://flagcdn.com/w80/es.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>H</strong></td><td>Uruguay</td><td>CONMEBOL</td><td>16</td><td><img src="https://flagcdn.com/w80/uy.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>H</strong></td><td>Saudi Arabia</td><td>AFC</td><td>56</td><td><img src="https://flagcdn.com/w80/sa.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>H</strong></td><td>Cape Verde</td><td>CAF</td><td>70</td><td><img src="https://flagcdn.com/w80/cv.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>I</strong></td><td>France</td><td>UEFA</td><td>3</td><td><img src="https://flagcdn.com/w80/fr.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>I</strong></td><td>Senegal</td><td>CAF</td><td>15</td><td><img src="https://flagcdn.com/w80/sn.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>I</strong></td><td>Norway</td><td>UEFA</td><td>41</td><td><img src="https://flagcdn.com/w80/no.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>I</strong></td><td>Iraq</td><td>AFC</td><td>63</td><td><img src="https://flagcdn.com/w80/iq.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>J</strong></td><td>Argentina</td><td>CONMEBOL</td><td>1</td><td><img src="https://flagcdn.com/w80/ar.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>J</strong></td><td>Austria</td><td>UEFA</td><td>24</td><td><img src="https://flagcdn.com/w80/at.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>J</strong></td><td>Algeria</td><td>CAF</td><td>33</td><td><img src="https://flagcdn.com/w80/dz.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>J</strong></td><td>Jordan</td><td>AFC</td><td>67</td><td><img src="https://flagcdn.com/w80/jo.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>K</strong></td><td>Portugal</td><td>UEFA</td><td>5</td><td><img src="https://flagcdn.com/w80/pt.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>K</strong></td><td>Colombia</td><td>CONMEBOL</td><td>13</td><td><img src="https://flagcdn.com/w80/co.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>K</strong></td><td>Uzbekistan</td><td>AFC</td><td>60</td><td><img src="https://flagcdn.com/w80/uz.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>K</strong></td><td>DR Congo</td><td>CAF</td><td>64</td><td><img src="https://flagcdn.com/w80/cd.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>L</strong></td><td>England</td><td>UEFA</td><td>4</td><td><img src="https://flagcdn.com/w80/gb-eng.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>L</strong></td><td>Croatia</td><td>UEFA</td><td>11</td><td><img src="https://flagcdn.com/w80/hr.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>L</strong></td><td>Ghana</td><td>CAF</td><td>46</td><td><img src="https://flagcdn.com/w80/gh.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+        <tr><td><strong>L</strong></td><td>Panama</td><td>CONCACAF</td><td>52</td><td><img src="https://flagcdn.com/w80/pa.png" width="70" height="35" onerror="this.src='https://via.placeholder.com/70x35?text=No+Flag'" class="flag-img"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      $('#teams_table').DataTable({
+        "paging": true,
+        "ordering": true,
+        "searching": true,
+        "info": true,
+        "pageLength": 24,
+        "order": [[ 0, "asc" ], [ 3, "asc" ]]
+      });
+    });
+  </script>
+
+</body>
+</html>

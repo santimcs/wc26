@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :knockout_results
   resources :teams
   resources :rounds
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   post 'standings/recalculate', to: 'standings#recalculate', as: 'recalculate_standings'
   post 'standings/init', to: 'standings#init', as: 'init_standings'
   get '/list_fixtures', to: 'fixtures#list_fixtures'
+  get 'bracket', to: 'bracket#index'
   
   root 'teams#index'
 end
